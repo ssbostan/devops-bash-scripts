@@ -9,7 +9,7 @@ This is a simple bash script that contains a function that gets a string and pri
 ## How to use:
 
 ```
-Usage: $0  "String To be Printed"  >>
+Usage: ./function-print-italic-string  "String To be Printed"  >>
                          Use "" to print string concatenation 
 ```
 
