@@ -5,7 +5,7 @@
 
 instruction() {
     cat <<EOL
-How to use this command: $0 <directory_name>
+How to use this command: $0 <directory_name or path>
 
 EOL
 }
@@ -25,4 +25,4 @@ if [[ ! -d "$1" ]]; then
     exit 1
 fi
 
-du -s -k $1 | awk '{print "The Total size of",$2,"directory is",$1/1024, "MB"}'
+du -s -k $1 | awk '{print "The total size of",$2,"directory is",$1/1024, "MB"}'
