@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+
+# https://github.com/ssbostan/devops-bash-scripts
+
+
+instruction() {
+    cat <<EOL
+How to use this command: $0 <directory_name>
+
+EOL
+}
+
+if [[ $# -lt 1 ]]; then
+    instruction
+    exit 1
+fi
+
+if [[ $# -ne 1 ]]; then
+    instruction
+    exit 1
+fi
+
+if [[ ! -d "$1" ]]; then
+    echo "ERROR: $1 should be a directory."
+    exit 1
+fi
+
+du -s -k $1 | awk '{print "The Total size of",$2,"directory is",$1/1024, "MB"}'
