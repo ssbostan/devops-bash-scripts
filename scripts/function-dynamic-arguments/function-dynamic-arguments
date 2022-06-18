@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# https://github.com/ssbostan/devops-bash-scripts
+
+#Checking number of arguments supplied by user.
+if [[ $# -eq 0 ]]; then
+	echo "ERROR: No arguments supplied!"
+	echo "Usage: $0 <number> <number>"
+	exit 1
+elif [[ $# -eq 1 ]]; then
+	echo "ERROR: You must at least enter 2 arguments!"
+	echo "Usage: $0 <number> <number>"
+	exit 1
+fi
+
+#Getting user arguments and store them in an array.
+args=("$@")
+
+sum_function() {
+
+	local sum_result=0
+
+	for i in "${args[@]}"; do
+		#Make sure all arguments are valid numbers.
+		case ${i#[-+]} in
+
+		'' | . | *[!0-9.]* | *.*.*)
+			echo "ERROR: '$i' is not a valid number!"
+			echo "Usage: $0 <number> <number>"
+			exit 1
+			;;
+
+		esac
+		#In Bash shell, we can only perform integer arithmetic.
+		#To perform arithmetic involving a floating point, we will need to use 'bc' command.
+		sum_result=$(bc <<<$sum_result'+'$i)
+
+	done
+	echo "$sum_result"
+
+}
+
+function_result="$(sum_function)"
+
+echo "Result = $function_result"
