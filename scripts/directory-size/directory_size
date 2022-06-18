@@ -3,17 +3,16 @@
 # https://github.com/ssbostan/devops-bash-scripts
 
 
+get-directory-size() {
+du -s -k $1 | awk '{print "The total size of",$2,"directory is",$1/1024, "MB"}'
+}
+
 instruction() {
     cat <<EOL
 How to use this command: $0 <directory_name or path>
 
 EOL
 }
-
-if [[ $# -lt 1 ]]; then
-    instruction
-    exit 1
-fi
 
 if [[ $# -ne 1 ]]; then
     instruction
@@ -25,4 +24,5 @@ if [[ ! -d "$1" ]]; then
     exit 1
 fi
 
-du -s -k $1 | awk '{print "The total size of",$2,"directory is",$1/1024, "MB"}'
+get-directory-size()
+
