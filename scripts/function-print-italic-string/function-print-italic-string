@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+# https://github.com/ssbostan/devops-bash-scripts
+
+
+function-print-italic-string(){
+    while true; do 
+    if [[ $# -eq 0 ]]; then 
+        break
+    fi
+        echo -en "\e[3m$1\e[0m "
+        shift 1 
+    done
+    
+}
+
+    
+if [[ $# -gt 1 ]]; then 
+    cat <<EOL
+Usage: $0  "String To be Printed"  >>
+                         Use "" to print string concatenation 
+EOL
+else
+    function-print-italic-string $1
+fi
+
