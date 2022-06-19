@@ -1,0 +1,13 @@
+#!/bin/bash
+clear
+
+function bold-string {
+	while true; do
+	if [[ $# == 0 ]]; then
+		break
+	fi
+		echo -e "\033[1m$1\033[0m"
+		exit 1
+	done
+}
+bold-string $1
