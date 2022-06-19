@@ -1,0 +1,42 @@
+#!/usr/bin/bash
+
+# https://github.com/ssbostan/devops-bash-scripts
+
+
+read -p "Enter your text: " text
+echo "With which colour do you want your text to be printed?" 
+
+colorgenerator() {
+	echo -e "\e[1;3"$i"m "$text" \e[0m"
+
+}
+
+
+select color in red green yellow blue black exit; do
+	case $color in 
+			red)
+				export i=1
+				colorgenerator $i
+				;;
+			green)
+				export i=2
+				colorgenerator $i
+				;;
+			yellow)
+				export i=3
+				colorgenerator $i
+				;;
+			blue)
+				export i=4
+				colorgenerator $i
+				;;
+			black)
+				export i=0
+				colorgenerator $i
+				;;
+			"exit")
+				exit 0
+				;;
+	esac
+done
+
