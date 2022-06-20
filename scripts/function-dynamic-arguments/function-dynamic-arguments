@@ -6,5 +6,3 @@ sum()
 	done
 	return $sum
 }
-sum $@
-echo $?
