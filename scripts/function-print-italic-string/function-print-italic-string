@@ -12,14 +12,3 @@ function-print-italic-string(){
     done
     
 }
-
-    
-if [[ $# -gt 1 ]]; then 
-    cat <<EOL
-Usage: $0  "String To be Printed"  >>
-                         Use "" to print string concatenation 
-EOL
-else
-    function-print-italic-string $1
-fi
-
