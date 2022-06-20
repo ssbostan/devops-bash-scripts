@@ -1,0 +1,10 @@
+#!/bin/bash
+sum()
+{
+	for n in $@; do
+		sum=$(( $sum + $n ))
+	done
+	return $sum
+}
+sum $@
+echo $?
