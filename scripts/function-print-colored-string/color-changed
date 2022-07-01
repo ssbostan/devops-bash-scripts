@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+# https://github.com/ssbostan/devops-bash-scripts
+
+color_number=0
+re='^[0-7]+$'
+read -p "Please enter your string and then press enter: " string
+cat <<EOL
+   choose the color number that you want your string turn to: 
+   0-Black		1-Red		2-Green
+   3-Brown/Orange	4-Blue		5-purple
+   6-Cyan		7-Light-Gray	
+EOL
+read color_number
+if ! [[ $color_number =~ $re ]] ; then
+   echo "Error: Not a valid number, please restart the program. " >&2; exit 1
+fi
+echo -e " \033[0;3"$color_number"m$string\n  "
